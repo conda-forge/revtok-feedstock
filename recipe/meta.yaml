@@ -13,18 +13,20 @@ source:
   sha256: a7447fefb44fbe46140bfc337c6ec756b869c37f737fd18eaec1293d15865b8f
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - tqdm
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - revtok
 
